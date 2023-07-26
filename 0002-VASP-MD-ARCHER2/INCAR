@@ -20,7 +20,7 @@ SYSTEM = FrostGroup
  LREAL = Auto      (Projection operators: automatic)
  !!LREAL = .FALSE. (Accurate forces; require for phonon calculations, difficult structures)
  ALGO  = FAST      (SCF minimisation algorithm; 38/48 combo)
- ENMAX = 500.00 eV (Plane-wave cutoff) 
+ ENMAX = 700.00 eV (Plane-wave cutoff) 
  NELM  = 50        (Max SCF steps)   
  NELMIN = 5        (Min SCF steps)
  EDIFF = 1E-06     (SCF energy convergence; eV) 
@@ -32,7 +32,7 @@ SYSTEM = FrostGroup
 
 !Ionic structure relaxation:
  EDIFFG =  -0.005    (Ionic convergence; eV/AA)
- NSW    =   2000     (Max ionic steps; 0 for single point with forces) 
+ NSW    =  50000     (Max ionic steps; 0 for single point with forces) 
  NBLOCK =     50     (Update XDATCAR, DOSCAR every NBLOCK steps) 
  IBRION =      0     (Algorithm: 0-MD; 1-Quasi-New DIIS; 2-CG; 3-damped MD)
  ISIF   =      2     (Stress/relaxation: 2-Ions, 3-Shape/Ions/V, 7-Vol)
@@ -92,5 +92,6 @@ SYSTEM = FrostGroup
 
 !Machine Learning Force Field:
  ML_LMLFF = .TRUE.
- ML_MODE = train      (train; refit; run)
+ ML_MODE = train
+ !(train; refit; run)
 
