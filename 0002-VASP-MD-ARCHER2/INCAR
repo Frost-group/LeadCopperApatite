@@ -2,7 +2,7 @@
 SYSTEM = FrostGroup 
 
 !Initialisation:
- NWRITE = 2        (Medium-level output)   
+ NWRITE = 1        (Medium-level output)   
  ISTART = 1        (Read existing wavefunction; if there) 
  INIWAV = 1        (Random initial wavefunction; otherwise)
  ICORELEVEL = 1    (Print core levels)
@@ -32,13 +32,13 @@ SYSTEM = FrostGroup
 
 !Ionic structure relaxation:
  EDIFFG =  -0.005    (Ionic convergence; eV/AA)
- NSW    =     50     (Max ionic steps; 0 for single point with forces) 
- NBLOCK =      1     (Update XDATCAR, DOSCAR every NBLOCK steps) 
- IBRION =      2     (Algorithm: 0-MD; 1-Quasi-New DIIS; 2-CG; 3-damped MD)
- ISIF   =      3     (Stress/relaxation: 2-Ions, 3-Shape/Ions/V, 7-Vol)
- ISYM   =      2     (Symmetry: 0=none; 2=GGA; 3=hybrids) 
+ NSW    =   2000     (Max ionic steps; 0 for single point with forces) 
+ NBLOCK =     50     (Update XDATCAR, DOSCAR every NBLOCK steps) 
+ IBRION =      0     (Algorithm: 0-MD; 1-Quasi-New DIIS; 2-CG; 3-damped MD)
+ ISIF   =      2     (Stress/relaxation: 2-Ions, 3-Shape/Ions/V, 7-Vol)
+ ISYM   =      0     (Symmetry: 0=none; 2=GGA; 3=hybrids) 
  ISMEAR =      0     (Gaussian smearing; metals:1)
- SIGMA  =      0.01  (Smearing value in eV; metals:0.2)
+ SIGMA  =      0.1  (Smearing value in eV; metals:0.2)
 
 !Miscellaneous:
  LORBIT    =   10     (PAW radii for projected DOS)
@@ -85,12 +85,12 @@ SYSTEM = FrostGroup
  !!LDIAG    = .True. (Diagnolise Eigenvalues)
  
 !Molecular Dynamics:
- !!POTIM  =       1    (Timestep in fs)
- !!TEBEG  =     100    (Start temp K)
- !!TEEND  =     100    (End temp K)
- !!SMASS  =       0    (Canonical ensemble)
+ POTIM  =       1    (Timestep in fs)
+ TEBEG  =     300    (Start temp K)
+ TEEND  =     300    (End temp K)
+ SMASS  =       0    (Canonical ensemble)
 
 !Machine Learning Force Field:
- !!ML_LMLFF = .TRUE.
- !!ML_MODE = train      (train; refit; run)
+ ML_LMLFF = .TRUE.
+ ML_MODE = train      (train; refit; run)
 
