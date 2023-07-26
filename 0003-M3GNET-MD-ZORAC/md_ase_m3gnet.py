@@ -31,6 +31,6 @@ driver = MolecularDynamics(atoms, potential=pot,
                            loginterval=20, trajectory=f"{f}_md.traj", 
                            logfile=f"{f}_md.log")
 # Run
-driver.run(1000)
-
+driver.run(100000)
+# 1000 steps (1ps) takes around 2' on Zorac
 
