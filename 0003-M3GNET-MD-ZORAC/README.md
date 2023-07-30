@@ -5,11 +5,26 @@ jarvist@zorac: /home/jarvist/REPOS/LeadCopperApatite/0003-M3GNET-MD-ZORAC
 Just a note, that this is using the new PyTorch MGL interface to M3GNET, which
 was super easy to get working:
 
+```sh
 conda create -n mgl
 conda activate mgl
 conda install pip
 pip install matgl
-mgl -h
+mgl -h # to ensure proper installation
+```
+
+<details>
+<summary>CUDA</summary>
+
+For CUDA to work, you may also need to re-install the `dgl` package to an updated version, see [this page](https://www.dgl.ai/pages/start.html)
+
+To force the reinstall, use flags like this:
+
+```sh
+pip install -U --force-reinstall -f https://data.dgl.ai/wheels/cu118/repo.html
+```
+
+</details>
 
 mgl is a little poorly documented currently; but the python primitives
 I recognised from ASE & the code is quite readable, so very quickly threw
