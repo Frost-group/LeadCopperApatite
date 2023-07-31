@@ -32,5 +32,5 @@ driver = MolecularDynamics(atoms, potential=pot,
                            logfile=f"{f}_md.log")
 # Run
 driver.run(100000)
-# 1000 steps (1ps) takes around 2' on Zorac
+# 1000 steps (1ps) takes around 2' on Zorac; on the unit cell
 

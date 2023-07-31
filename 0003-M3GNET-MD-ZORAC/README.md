@@ -20,3 +20,11 @@ Doing MD, all 32 cores on Zorac are being occupied, but it's not touching the
 GPU. I haven't checked whether it would be possible / any faster to unload
 PyTorch to CUDA.
 
+Thu 27 Jul 13:09:46 BST 2023
+Sea state: Smooth
+jarvist@zorac: /home/jarvist/REPOS/LeadCopperApatite/0003-M3GNET-MD-ZORAC
+
+; pip install --upgrade MDAnalysis
+
+For analysis.
+
