@@ -1,3 +1,5 @@
 *.traj filter=lfs diff=lfs merge=lfs -text
 *.netcdf filter=lfs diff=lfs merge=lfs -text
 *.xdatcar filter=lfs diff=lfs merge=lfs -text
+vasp* filter=lfs diff=lfs merge=lfs -text
+ML_* filter=lfs diff=lfs merge=lfs -text
