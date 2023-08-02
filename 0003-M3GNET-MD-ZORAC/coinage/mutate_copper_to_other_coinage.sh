@@ -3,7 +3,8 @@ do
     for e in Au Ag
     do
         n=$(echo "${f}" | sed s/Cu/${e}/ )
-        echo cat "${f}" sed -i '' s/Cu/${e}/ $n
+        echo "$f ==> $n with $e subst." 
+        cat ${f} | sed s/Cu/${e}/ > $n
     done
 done
 
