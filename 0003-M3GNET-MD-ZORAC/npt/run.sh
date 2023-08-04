@@ -1,4 +1,4 @@
-for f in *Au*.vasp *Ag*.vasp
+for f 
 do
     echo "$f"
     python md_ase_m3gnet.py "${f}"  
