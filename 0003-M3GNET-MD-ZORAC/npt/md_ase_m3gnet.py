@@ -28,8 +28,13 @@ MaxwellBoltzmannDistribution(atoms, temperature_K=300)
 driver = MolecularDynamics(atoms, potential=pot, 
                            temperature=300, timestep=1.0, 
                            ensemble="npt",
+                            pressure=1,
+                            compressibility_au = 16.66,
                            loginterval=20, trajectory=f"{f}_md.traj", 
                            logfile=f"{f}_md.log")
+# bulk modulus estimated as in Ev/A^3 = 0.06 (10 GPa), invert this to get compressiiblity
+# I think this must be using a Bernendsen thermo + baro stat?
+
 # Run
 driver.run(100000)
 # 1000 steps (1ps) takes around 2' on Zorac; on the unit cell
