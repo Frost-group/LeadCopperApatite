@@ -2,8 +2,8 @@
 SYSTEM = FrostGroup 
 
 !Initialisation:
- NWRITE = 1        (Medium-level output)   
- ISTART = 1        (Read existing wavefunction; if there) 
+ NWRITE = 2        (Medium-level output)   
+ ISTART = 0        (Read existing wavefunction; if there) 
  INIWAV = 1        (Random initial wavefunction; otherwise)
  ICORELEVEL = 1    (Print core levels)
  !!ICHARG   = 11   (Non-self-consistent: GGA/LDA band structures)
@@ -12,32 +12,32 @@ SYSTEM = FrostGroup
 
 !Parallelisation: 
  LPLANE   = .TRUE. (Real space distribution; supercells)
- NCORE    = 16     (how many cores share the work on an individual orbital)
- !!KPAR   = 2      (Divides k-grid into separate groups; must be integer divisor total cores)
+ NCORE    = 8     (how many cores share the work on an individual orbital)
+ KPAR   = 8      (Divides k-grid into separate groups; must be integer divisor total cores)
 
 !Electronic structure converengce:
  PREC  = Accurate  (Precision level)
  LREAL = Auto      (Projection operators: automatic)
  !!LREAL = .FALSE. (Accurate forces; require for phonon calculations, difficult structures)
- ALGO  = FAST      (SCF minimisation algorithm; 38/48 combo)
- ENMAX = 500.00 eV (Plane-wave cutoff) 
+ ALGO  = ALL       (SCF minimisation algorithm)
+ ENMAX = 700.00 eV (Plane-wave cutoff) 
  NELM  = 50        (Max SCF steps)   
  NELMIN = 5        (Min SCF steps)
  EDIFF = 1E-06     (SCF energy convergence; eV) 
  ISPIN =  1        (Closed shell DFT)
  !!ISPIN = 2       (Spin polarised DFT)
- GGA     =  PS     (PBEsol exchange-correlation)
+ GGA     =  PE     (PBEsol exchange-correlation)
  ADDGRID = .TRUE.  (Increase grid; helps GGA convergence) 
  !!LASPH = .TRUE.  (Non-spherical elements; d/f convergence)
 
 !Ionic structure relaxation:
  EDIFFG =  -0.005    (Ionic convergence; eV/AA)
- NSW    =   2000     (Max ionic steps; 0 for single point with forces) 
+ NSW    =      0     (Max ionic steps; 0 for single point with forces) 
  NBLOCK =     50     (Update XDATCAR, DOSCAR every NBLOCK steps) 
  IBRION =      0     (Algorithm: 0-MD; 1-Quasi-New DIIS; 2-CG; 3-damped MD)
  ISIF   =      2     (Stress/relaxation: 2-Ions, 3-Shape/Ions/V, 7-Vol)
  ISYM   =      0     (Symmetry: 0=none; 2=GGA; 3=hybrids) 
- ISMEAR =      0     (Gaussian smearing; metals:1)
+ ISMEAR =      1     (Gaussian smearing; metals:1)
  SIGMA  =      0.1  (Smearing value in eV; metals:0.2)
 
 !Miscellaneous:
@@ -45,7 +45,7 @@ SYSTEM = FrostGroup
  !!LORBIT  =    1     (Supply radii for projected DOS)
  !!RWIGS   =  1.5 1.5 (Radii for each atomic species)  
  !!LOPTICS = .TRUE.   (Dielectric functions)
- NEDOS     =  1000    (DOSCAR points)
+ !!NEDOS     =  1000    (DOSCAR points)
  !!LVTOT   = .TRUE.   (Electrostatic potential)
  !!LELF    = .TRUE.   (Localisation function)
  !!NGX     = 500      (FFT grid mesh density; nice plots)
@@ -62,7 +62,7 @@ SYSTEM = FrostGroup
 !Magnetic Calculations:
  !!MAGMOM  = 5 0     (Initial magnetic momoment on each ion)
  !!NUPDOWN = -1      (Enforce spin multiplet)
- !!LSORBIT = .TRUE.  (Spin-orbit coupling)
+ LSORBIT = .TRUE.  (Spin-orbit coupling)
 
 !DFT+U Calculations:
  !!LDAU    = .TRUE. (Activate DFT+U)
@@ -73,24 +73,26 @@ SYSTEM = FrostGroup
  !!LMAXMIX =  4     (Mixing cut-off; 4-d, 6-f)
 
 !Hybrid-DFT Calculations: 
- !!LHFCALC  = .TRUE. (Activate HF)
- !!PRECFOCK = Fast  (HF FFT grid)
- !!NKRED    = 2      (Reduce k-grid-even only)
+ LHFCALC  = .TRUE. (Activate HF)
+ PRECFOCK = Fast  (HF FFT grid)
+ NKRED    = 2      (Reduce k-grid-even only)
  !!ALGO     = DAMPED (Dampened MD SCF; IALGO=53)
+ !!IALGO = 53
  !!ALGO     = All    (SCF Combo; ALGO=58)
  !!TIME     = 0.30   (Timestep for IALGO5X)  
  !!HFLMAX   = 4      (HF cut-off: 4d,6f) 
- !!HFSCREEN = 0.207 (Switch to screened exchange; e.g. HSE06)
+ HFSCREEN = 0.207 (Switch to screened exchange; e.g. HSE06)
  !!AEXX     = 0.25   (25% HF exchange; e.g. PBE0)
  !!LDIAG    = .True. (Diagnolise Eigenvalues)
  
 !Molecular Dynamics:
- POTIM  =       1    (Timestep in fs)
- TEBEG  =     300    (Start temp K)
- TEEND  =     300    (End temp K)
- SMASS  =       0    (Canonical ensemble)
+ !!POTIM  =       1    (Timestep in fs)
+ !!TEBEG  =     300    (Start temp K)
+ !!TEEND  =     300    (End temp K)
+ !!SMASS  =       0    (Canonical ensemble)
 
 !Machine Learning Force Field:
- ML_LMLFF = .TRUE.
- ML_MODE = train      (train; refit; run)
+ !!ML_LMLFF = .TRUE.
+ !!ML_MODE = train
+ !!(train; refit; run)
 
